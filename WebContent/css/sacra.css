@@ -1,0 +1,42 @@
+/* 
+  CSS mínima para diferenciar alguna seccion.
+  No es objetivo de este módulo ni la maquetación ni el diseño gráfico. 
+ */
+ 
+@charset "ISO-8859-1";
+
+.header {
+  background-color: #FFFFFF;
+  border: 2px solid #3B8067;
+}
+
+.bar {
+  background-color: #81C1AA;
+  border: 2px solid #3B8067;
+  border-radius: 4px;
+}
+
+.content {
+  background-color: #EEEEEE;
+}
+
+
+.footer {
+  background-color: #81C1AA;  
+  color: #EEEEEE;
+}
+
+.language {
+   background-color: #81C1AA;
+   float: right;
+}
+
+.user-data {
+   background-color: #EEEEEE;
+   float: right;
+}
+
+.shopping-cart {
+   background-color: #B2DAB9;
+   float: right;
+}

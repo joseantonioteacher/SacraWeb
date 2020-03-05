@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1">
+  <display-name>SacraWeb</display-name>
+  <welcome-file-list>
+        <welcome-file>/html/index.jsp</welcome-file>
+  </welcome-file-list>  
+
+  <session-config>
+        <session-timeout>30</session-timeout>
+  </session-config>
+  
+  <error-page>
+    <error-code>404</error-code>
+    <location>/html/error/error404.jsp</location>
+  </error-page>
+  <error-page>
+    <error-code>500</error-code>
+    <location>/html/error/error500.jsp</location>
+  </error-page> 
+  <!--
+  Tambien podriamos hacerlo por excepciones 
+  <error-page>
+    <exception-type>com.sacra.ecommerce.exceptions.ServiceException</exception-type>
+    <location>/html/error/service-exception.jsp</location>
+  </error-page>
+  <error-page>
+    <exception-type>java.lang.Throwable</exception-type>
+    <location>/Throwable.jsp</location>
+  </error-page>
+ -->    
+  <!-- En servlet 3.0 o superior tambien se puede especificar un error general -->
+  <error-page>
+        <location>/html/error/error.jsp</location>
+  </error-page>       
+
+	     
+    <!-- ========================== Filters ============================ -->
+    <!-- Configurados aqui en lugar de con anotaciones ya que la
+         anotacion @WebFilter no tiene manera de especificar orden de los 
+         filtros y esto es importante -->
+	<filter>
+	   <filter-name>InitSessionFilter</filter-name>
+	   <filter-class>com.sacra.ecommerce.web.filter.InitSessionFilter</filter-class>
+	   <!-- Si el filtro tuviese parametros de configuracion  
+	   <init-param>
+	      <param-name>nombreparametro</param-name>
+	      <param-value>valor</param-value>
+	   </init-param>
+	    -->
+	</filter>
+	
+	<filter>
+	   <filter-name>LocaleFilter</filter-name>
+	   <filter-class>com.sacra.ecommerce.web.filter.LocaleFilter</filter-class>
+	</filter>	
+
+	<filter-mapping>
+	   <filter-name>InitSessionFilter</filter-name>
+	   <url-pattern>/*</url-pattern>
+	</filter-mapping>  
+	
+	<filter-mapping>
+	   <filter-name>LocaleFilter</filter-name>
+	   <url-pattern>/*</url-pattern>
+	</filter-mapping>  
+</web-app>
